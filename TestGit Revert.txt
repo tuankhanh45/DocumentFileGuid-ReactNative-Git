@@ -1,0 +1,51 @@
+Sử dụng revert code
+tạo 1 file demo.txt 
+add file vào commit lần 1 với lệnh add sau đó mới comment -m
+tạo các thay đổi trong file và commit bằng lệnh -am
+reflog để xem thay đổi thu gọn: 
+
+$ git reflog
+c4e504c (HEAD -> master) HEAD@{0}: commit: commit 5                        data:  4
+6efbf84 HEAD@{1}:                  commit: commit 4                        data:  3
+49d1fe6 HEAD@{2}:                  commit: commit 3                        data:  2
+8fe9f5c HEAD@{3}:                  commit: commit 2 					   data:  1	
+bd01afb HEAD@{4}:                  commit  commit 1                        data: null
+
+
+git revert 6efbf84 ( HEAD@{1} revert 1 tham số ) 
+
+$ git revert 6efbf84
+error: could not revert 6efbf84... commit 4 
+hint: after resolving the conflicts, mark the corrected paths
+hint: with 'git add <paths>' or 'git rm <paths>'
+hint: and commit the result with 'git commit'
+
+sau khi chạy lệnh cần phải sửa file và commit -am lại
+
+<<<<<<< HEAD
+5
+=======
+3
+>>>>>>> parent of 6efbf84... commit 4 
+
+
+data  5 >>>>> 3  lệnh revert gọi lần 4 sẽ bỏ data từ phần 4 trở đi giữ lại  data lần 3.
+
+git revert  (  revert 2 tham số ) 
+
+$ git reflog
+55ce4fd (HEAD -> master) HEAD@{0}: commit: commit 2p lan commit 10000
+0dd97aa HEAD@{1}: commit: commit 2p lan commit 9
+c154cac HEAD@{2}: commit: commit 2p lan commit 9
+5702a97 HEAD@{3}: commit: commit 2p lan commit 8
+e3439c7 HEAD@{4}: commit: commit 2p lan commit 7
+97f971e HEAD@{5}: commit: commit to revert 1 params
+c4e504c HEAD@{6}: commit: commit 5 - fix 4
+6efbf84 HEAD@{7}: commit: commit 4 - fix 3
+49d1fe6 HEAD@{8}: commit: commit 3 - fix 2
+8fe9f5c HEAD@{9}: commit: commit 2 - fix 1
+bd01afb HEAD@{10}: commit (initial): creact file - commit 1
+
+git revert -n e3439c7 55ce4fd
+đổi vị trí commit
+

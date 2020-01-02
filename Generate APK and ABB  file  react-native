@@ -53,13 +53,13 @@ in signingConfigs  replace
         }
 in buildTypes > release  add new
 		
-Step 4: Run Teminal in project 	
-cd android && ./gradlew bundleRelease to build ABB file
-cd android && ./gradlew assembleRelease to build APK file
-
+Step 4: Run Teminal in project 	of VS CODE
+cd android 
+./gradlew bundleRelease to build ABB file
+./gradlew assembleRelease to build APK file
 Step 5: Find file Apk in                 android/app/build/outputs/apk/debug/app-debug.apk
         Find file AAB upload google play android/app/build/outputs/bundle/release/app.aab
 
-
+There is no way. To generate .ipa you must have a Mac and Xcode(aside from expo)
 		
 		

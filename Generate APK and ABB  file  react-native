@@ -1,4 +1,4 @@
-Build APK app android 
+https://reactnative.dev/docs/signed-apk-android
 
 I.Generate Keystore 
 
@@ -19,7 +19,7 @@ two-letter city         : 84  ID country
 
 finnaly >                 yes 
 
-my-key-alias            :123456  (take google)
+my-key-alias            :123456  
 
 II. gen APK
 Step 1: Go to project > android >app  paste file    my-upload-key.keystore   
@@ -30,7 +30,16 @@ MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
 MYAPP_UPLOAD_STORE_PASSWORD=123456
 MYAPP_UPLOAD_KEY_PASSWORD=123456
 
-Step 3: Edit the file android/app/build.gradle
+Step 3: 
+Add new in the file ~/.gradle/gradle.properties or android/gradle.properties
+
+MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
+MYAPP_UPLOAD_STORE_PASSWORD=*****
+MYAPP_UPLOAD_KEY_PASSWORD=*****
+
+
+Edit the file android/app/build.gradle
 
 in signingConfigs  replace
 
@@ -51,11 +60,16 @@ in signingConfigs  replace
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
         }
-in buildTypes > release  add new
+
+in the  buildTypes > release  change to 
+
+signingConfig signingConfigs.release
+
+
 		
 Step 4: Run Teminal in project 	of VS CODE
 cd android 
-./gradlew bundleRelease to build ABB file
+./gradlew bundleRelease to build ABB file (./gradlew assembleRelease --no-daemon)
 ./gradlew assembleRelease to build APK file
 Step 5: Find file Apk in                 android/app/build/outputs/apk/debug/app-debug.apk
         Find file AAB upload google play android/app/build/outputs/bundle/release/app.aab

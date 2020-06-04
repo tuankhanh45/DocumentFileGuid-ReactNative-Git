@@ -7,7 +7,7 @@ cd C:\Program Files\Java\jdk1.8.0_181\bin
 
 Step 2: run
 keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
-
+if keystore delete it
 Step 3: fill information
 add password            : 123456 
 add name                : tuan khanh
@@ -15,7 +15,7 @@ add organizational unit : Doug Company
 organizational unit     : Doug Company
 city  					: Viet Nam
 state 					: Ha Noi
-two-letter city         : 84  ID country
+two-letter city         :  VN
 
 finnaly >                 yes 
 
@@ -24,7 +24,7 @@ my-key-alias            :123456
 
 
 II. gen APK
-Step 1: Go to project > android >app  paste file    my-upload-key.keystore   
+Step 1: Go to project > android > app  paste file    my-upload-key.keystore   
 
 Step 2: Edit file ~/.gradle/gradle.properties or android/gradle.properties
 
@@ -70,8 +70,8 @@ in the  buildTypes > release  change to
 		
 Step 4: Run Teminal in project 	of VS CODE
 cd android 
-./gradlew bundleRelease to build ABB file (./gradlew assembleRelease --no-daemon)
-./gradlew assembleRelease to build APK file
+./gradlew bundleRelease to build ABB file 
+./gradlew assembleRelease to build APK file (./gradlew assembleRelease --no-daemon)
 Step 5: Find file Apk in                 android/app/build/outputs/apk/debug/app-debug.apk
         Find file AAB upload google play android/app/build/outputs/bundle/release/app.aab
 
